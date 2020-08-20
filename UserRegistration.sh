@@ -1,56 +1,41 @@
 #!/bin/bash -x
+echo "Welcome to user registration problem."
 
-echo "Welcome To User Registration Programming"
+#for seprate email validations
+emailPattern1="^[0-9a-zA-z]$"
+emailPattern2="^[0-9a-zA-z]+([._+-][0-9a-zA-z]+)*@[a-zA-Z0-9]$"
+emailPattern3="^[0-9a-zA-z]+([._+-][0-9a-zA-z]+)*@[a-zA-Z0-9]+.[a-zA-Z]{2,4}([.][a-zA-Z]{2})$"
 
-validName="^[A-Z]{1}[a-z]{2,}$" 
+#constants
+VALIDNAMEPATTERN="^[A-Z]{1}[a-z]{2,}$"
+EMAILPATTERN="^[0-9a-zA-z]+([._+-][0-9a-zA-z]+)*@[a-zA-Z0-9]+.[a-zA-Z]{2,4}([.][a-zA-Z]{2})$"
+MOBILEPATTERN="^[+][0-9]{2}[ ][0-9]{10}$"
+PASSWORD="^[A-Z]{1,}*[a-z]{4,}[*&^%$#@!+=]{1}*[0-9]{2,}*$"
 
-firstName=""
-read -p "Enter The firstName:" firstName
+#function for pattern check
+function patternCheck()
+{
+   if [[ $1 =~ $2 ]]
+   then
+      echo "Valid Pattern."
+   else
+      echo "Invalid Pattern."
+   fi
+}
 
-if [[ $firstName =~ $validName ]]
-then
-      echo "firstName Is Valid"
-else
-      echo "firstName Is Invalid"
-fi
+#for user input and calling the function and passes the parameter
+read -p "Enter first name: " firstName
+patternCheck $firstName $VALIDNAMEPATTERN
 
-lastName=""
-read -p "Enter The lastName:" lastName
+read -p "Enter last name: " lastName
+patternCheck $lastName $VALIDNAMEPATTERN
 
-if [[ $lastName =~ $validName ]]
-then
-      echo "lastName Is Valid"
-else
-      echo "lastName Is Invalid"
-fi
+read -p "Enter email address: " emailId
+patternCheck $emailId $EMAILPATTERN
 
-email=""
-validEmail="^[0-9a-zA-z]+([._+-][0-9a-zA-z]+)*@[a-zA-Z0-9]+.[a-zA-Z]{2,4}([.][a-zA-Z]{2})$"
+read -p "Enter mobile number: " mobileNumber
+patternCheck $mobileNumber $MOBILEPATTERN
 
-read -p "Enter The Email:" email
-if [[ $email =~ $validEmail ]]
-then
-    echo "email is valid"
-else
-     echo "email is invalid"
-fi
+read -p "Enter your password: " password
+patternCheck $password $PASSWORD
 
-mobileFormat=""
-validMobileFormat="^[+][0-9]{2}[ ][0-9]{10}$"   
-read -p "Enter the mobile number format:" mobileFormat
-if [[ $mobileFormat =~ $validMobileFormat ]]
-then
-      echo "The mobile format is valid"
-else
-      echo "The mobile format is invalid"
-fi
-
-Password=""
-validPassword="^[A-Z]{1,}*[a-z]{4,}*[0-9]{2,}*[\!\@\#\%\$\&\*\]{1}*$"
-read -p "Enter the valid password:" Password
-if [[ $Password =~ $validPassword ]]
-then
-      echo "The password is valid"
-else
-      echo "The password is not valid"
-fi
