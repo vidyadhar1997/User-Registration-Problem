@@ -35,3 +35,12 @@ else
      echo "email is invalid"
 fi
 
+mobileFormat=""
+validMobileFormat="^[+][0-9]{2}[ ][0-9]{10}$"   
+read -p "Enter the mobile number format:" mobileFormat
+if [[ $mobileFormat =~ $validMobileFormat ]]
+then
+      echo "The mobile format is valid"
+else
+      echo "The mobile format is invalid"
+fi
