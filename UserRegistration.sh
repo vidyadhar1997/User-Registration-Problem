@@ -3,12 +3,22 @@
 echo "Welcome To User Registration Programming"
 
 validName="^[A-Z][a-z]{3,}$"
-userName=""
-read -p "Enter The Name :" userName
+firstName=""
+read -p "Enter The firstName:" firstName
 
-if [[ $userName =~ $validName ]]
+if [[ $firstName =~ $validName ]]
 then
-      echo "User Name Is Valid"
+      echo "firstName Is Valid"
 else
-      echo "User Name Is Invalid"    
+      echo "firstName Is Invalid"
+fi
+
+lastName=""
+read -p "Enter The lastName:" lastName
+
+if [[ $lastName =~ $validName ]]
+then
+      echo "lastName Is Valid"
+else
+      echo "lastName Is Invalid"
 fi
