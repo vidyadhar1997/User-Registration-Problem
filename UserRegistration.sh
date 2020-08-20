@@ -2,7 +2,8 @@
 
 echo "Welcome To User Registration Programming"
 
-validName="^[A-Z][a-z]{3,}$"
+validName="^[A-Z]{1}[a-z]{2,}$" 
+
 firstName=""
 read -p "Enter The firstName:" firstName
 
@@ -22,3 +23,15 @@ then
 else
       echo "lastName Is Invalid"
 fi
+
+email=""
+validEmail="^[0-9a-zA-z]+([._+-][0-9a-zA-z]+)*@[a-zA-Z0-9]+.[a-zA-Z]{2,4}([.][a-zA-Z]{2})$"
+
+read -p "Enter The Email:" email
+if [[ $email =~ $validEmail ]]
+then
+    echo "email is valid"
+else
+     echo "email is invalid"
+fi
+
